@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+
+public class _07_CountSubstringOccurrences {
+
+	public static void main(String[] args) {
+		@SuppressWarnings("resource")
+		Scanner scn = new Scanner(System.in);
+		
+		String input = scn.nextLine().toUpperCase();
+		String wordToFind = scn.nextLine().toUpperCase();
+		
+		int count = 0;
+
+        int wordToFindLength = wordToFind.length();
+        for(int i = 0; i < input.length(); i ++){
+            if(wordToFind.startsWith(Character.toString(input.charAt(i)))){
+                if(input.substring(i).length() >= wordToFindLength){
+                    if(input.substring(i, i + wordToFindLength).equals(wordToFind)){
+                        count++;
+                    }
+                }
+            }
+        }
+		System.out.println(count);
+	}
+
+}
