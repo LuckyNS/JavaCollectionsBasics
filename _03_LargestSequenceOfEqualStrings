@@ -1,0 +1,38 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Scanner;
+
+
+public class _03_LargestSequenceOfEqualStrings {
+
+	public static void main(String[] args) {
+		@SuppressWarnings("resource")
+		Scanner scn = new Scanner(System.in);
+		
+		String[] elements = scn.nextLine().split(" ");
+		
+		Map<String, Integer> wordCounter = new HashMap<String, Integer>();
+        
+        for (String word : elements) {
+                Integer count = wordCounter.get(word);
+                if(count == null){
+                        count = 0;
+                }
+                wordCounter.put(word, count + 1);
+        }
+       
+        Entry<String,Integer> maxEntry = null;
+
+        for(Entry<String,Integer> entry : wordCounter.entrySet()) {
+            if (maxEntry == null || entry.getValue() > maxEntry.getValue()) {
+                maxEntry = entry;
+            }
+        }
+       
+        for (int i = 0; i < maxEntry.getValue(); i++) {
+                System.out.printf("%s ", maxEntry.getKey());
+        }
+	}
+
+}
