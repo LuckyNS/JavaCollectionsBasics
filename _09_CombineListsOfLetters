@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class _09_CombineListsOfLetters {
+
+	public static void main(String[] args) {
+		try (Scanner scanner = new Scanner(System.in)) {
+			ArrayList<Character> list1 = new ArrayList<>();
+			ArrayList<Character> combinedList = new ArrayList<>();
+
+			for (char c : scanner.nextLine().replaceAll("\\s+", "")
+					.toCharArray()) {
+				list1.add(c);
+			}
+			combinedList.addAll(list1);
+			for (char c : scanner.nextLine().replaceAll("\\s+", "")
+					.toCharArray()) {
+				if (!list1.contains(c)) {
+					combinedList.add(c);
+				}
+			}
+			for (char c : combinedList) {
+				System.out.print(c + " ");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
